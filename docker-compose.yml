@@ -1,0 +1,18 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    container_name: api.auth.deepblu.container
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: deepblu-auth-api:1.0
+    ports:
+      - "9000:9000"
+    volumes: ['./:/apps']
+    working_dir: /apps
+    restart: always
+    networks:
+      - deepblu
+networks:
+  deepblu:
+    external: true
